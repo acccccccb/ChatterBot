@@ -359,7 +359,7 @@ class CHG:
 
 
 class CHI:
-    ISO_639_1 = 'zh'
+    ISO_639_1 = 'zh_core_web_sm'
     ISO_639 = 'chi'
     ENGLISH_NAME = 'Chinese'
 
@@ -581,7 +581,7 @@ class ELX:
 
 
 class ENG:
-    ISO_639_1 = 'en'
+    ISO_639_1 = 'en_core_web_sm'
     ISO_639 = 'eng'
     ENGLISH_NAME = 'English'
 

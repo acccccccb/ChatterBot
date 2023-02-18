@@ -12,6 +12,7 @@ venv
 *.egg/*
 *.eggs/*
 *.doctrees
-
+.idea
+.vscode
 # Database files
 *.sqlite3

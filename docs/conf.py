@@ -57,7 +57,7 @@ release = config['chatterbot']['version']
 # The short X.Y version
 version = config['chatterbot']['version'].rsplit('.', 1)[0]
 
-language = 'en'
+language = 'zh_core_web_sm'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -142,7 +142,7 @@ html_show_sphinx = False
 # Sphinx supports the following languages:
 #   'da', 'de', 'en', 'es', 'fi', 'fr', 'hu', 'it', 'ja'
 #   'nl', 'no', 'pt', 'ro', 'ru', 'sv', 'tr', 'zh'
-html_search_language = 'en'
+html_search_language = 'zh'
 
 # Output file base name for HTML help builder
 htmlhelp_basename = 'ChatterBotdoc'
