@@ -6,22 +6,31 @@ from chatterbot.trainers import ListTrainer, ChatterBotCorpusTrainer
 import time
 import logging
 
-BOT_NAME = ""
+BOT_NAME = "bot1"
+BOT2_NAME = "bot2"
 logger = logging.getLogger()
 logger.setLevel(logging.CRITICAL)
 
-chatbot = ChatBot(BOT_NAME,
+chatbot1 = ChatBot(BOT_NAME,
     storage_adapter={
         'tagger_language': languages.CHI,
         'import_path': 'chatterbot.storage.SQLStorageAdapter',
     },
 )
+chatbot2 = ChatBot(BOT2_NAME,
+  storage_adapter={
+      'tagger_language': languages.CHI,
+      'import_path': 'chatterbot.storage.SQLStorageAdapter',
+  },
+  )
 # clear all data
 # chatbot.storage.drop()
 
 # First, lets train our bot with some data
-trainer = ChatterBotCorpusTrainer(chatbot)
+trainer = ChatterBotCorpusTrainer(chatbot1)
+trainer2 = ChatterBotCorpusTrainer(chatbot2)
 trainer.train('./data/chinese')
+trainer2.train('./data/chinese')
 # trainer.train('./data/custom')
 
 #
@@ -34,17 +43,19 @@ trainer.train('./data/chinese')
 
 # Now we can export the data to a file
 trainer.export_for_training('./train/ai.json')
+trainer2.export_for_training('./train/ai2.json')
 
 ## cli
 # inputData = input("> ")
-msg = '问题';
+msg = '问题'
 while 1 > 0:
     try:
-        print("> " + msg)
-        response = chatbot.get_response(msg)
-        print(str(BOT_NAME + "> ") + str(response))
-        msg = str(response)
-        time.sleep(0.2)
+        response1 = chatbot1.get_response(msg)
+        print(BOT_NAME + "> " + str(response1))
+        response2 = chatbot2.get_response(str(response1))
+        print(BOT2_NAME + "> " + str(response2))
+        msg = str(response2)
+        time.sleep(1)
     except(KeyboardInterrupt, EOFError, SystemExit):
         break
 
